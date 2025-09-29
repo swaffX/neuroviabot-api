@@ -41,7 +41,7 @@ export default async function handler(request) {
 
   try {
     // Environment variables
-    const CLIENT_ID = process.env.DISCORD_CLIENT_ID || '1294392725863514122'
+    const CLIENT_ID = process.env.DISCORD_CLIENT_ID || '773539215098249246'
     const CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET
     const REDIRECT_URI = process.env.DISCORD_REDIRECT_URI
 
