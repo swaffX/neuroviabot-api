@@ -51,6 +51,11 @@ export default async function handler(request) {
       hasClientSecret: !!CLIENT_SECRET,
       hasRedirectUri: !!REDIRECT_URI
     })
+    
+    // DEBUG: Actual values (masked for security)
+    console.log('CLIENT_ID:', CLIENT_ID)
+    console.log('CLIENT_SECRET (first 10 chars):', CLIENT_SECRET ? CLIENT_SECRET.substring(0, 10) + '...' : 'MISSING')
+    console.log('REDIRECT_URI:', REDIRECT_URI)
 
     if (!CLIENT_SECRET) {
       console.log('Missing CLIENT_SECRET')
@@ -62,6 +67,17 @@ export default async function handler(request) {
 
     // Exchange code for token
     console.log('Starting token exchange...')
+    
+    // DEBUG: Token exchange parameters
+    const tokenParams = {
+      client_id: CLIENT_ID,
+      client_secret: CLIENT_SECRET ? CLIENT_SECRET.substring(0, 10) + '...' : 'MISSING',
+      code: code ? code.substring(0, 10) + '...' : 'MISSING',
+      grant_type: 'authorization_code',
+      redirect_uri: REDIRECT_URI,
+    }
+    console.log('Token exchange params:', tokenParams)
+    
     const tokenResponse = await fetch('https://discord.com/api/oauth2/token', {
       method: 'POST',
       headers: {
