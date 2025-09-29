@@ -9,6 +9,7 @@ export default async function handler(request) {
 
   console.log('=== VERCEL EDGE FUNCTION - DISCORD OAUTH CALLBACK ===')
   console.log('Timestamp:', new Date().toISOString())
+  console.log('Environment variables updated - force redeploy')
   console.log('Code received:', !!code)
   console.log('Error received:', error)
 
